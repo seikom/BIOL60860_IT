@@ -9,7 +9,7 @@ class Testvariant(models.Model):
     age = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(120)], name='Age')
     proband = models.BooleanField(choices=((True,"Y"),(False,"N")), null=True, name='Proband')
     affected_relatives = models.BooleanField(choices=((True,"Y"),(False,"N")), null=True, name='Affected relatives')
-    stage = models.IntegerField(choices=(("1","1"),("2","2"),("3","3")), null=True, name='Stage')
+    stage = models.IntegerField(choices=((1,"1"),(2,"2"),(3,"3")), null=True, name='Stage')
     description = models.CharField(max_length=500, null=True, name='Description')
     sequencer = models.CharField(choices=(("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")), max_length=20, null=True, name='Sequencer')
     gene = models.CharField(max_length=10, null=True, name='Gene')
