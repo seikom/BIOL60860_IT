@@ -7,4 +7,5 @@ def Homepage(request):
      return render(request, 'DB/homepage.html', {})
 
 def Variantpage(request):
-    return render(request, 'DB/variantpage.html', {})
+    Variants = Testvariant.objects.filter(name__contains='Test')
+    return render(request, 'DB/variantpage.html', {'Variants': Variants})

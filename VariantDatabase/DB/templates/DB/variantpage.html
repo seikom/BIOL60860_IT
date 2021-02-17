@@ -1,13 +1,9 @@
-<html>
-        <head>
-        <title>Variant database</title>
-	</head>
+  <div>
+      <h1><a href="/">Hyperlink back to homepage</a></h1>
+  </div>
 
-        <p>Variant page</p>
-
-        {% for i in test %}
-	    {{ i }}
-
-        {% endfor %}
-
-	</html>
+  {% for Variant in Variants %}
+      <div>
+          <p>Name: {{Variant}}</p>
+      </div>
+  {% endfor %}
