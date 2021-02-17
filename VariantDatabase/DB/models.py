@@ -12,7 +12,7 @@ class Testvariant(models.Model):
     stage = models.IntegerField(choices=(("1","1"),("2","2"),("3","3")), null=True, name='Stage')
     description = models.CharField(max_length=500, null=True, name='Description')
     sequencer = models.CharField(choices=(("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")), max_length=20, null=True, name='Sequencer')
-    gene = models.CharField(max_length=10, blank=True, name='Gene')
+    gene = models.CharField(max_length=10, null=True, name='Gene')
     chrm = models.CharField(null=True, choices=(("1","1"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"),("7","7"),("8","8"),("9","9"),("10","10"),("11","11"),("12","12"),("13","13"),("14","14"),("15","15"),("16","16"),("17","17"),("18","18"),("19","19"),("20","20"),("21","21"),("22","22"),("X","X"),("Y","Y")), max_length=2, name='Chromosome')
     variant_cdna = models.CharField(max_length=200, null=True, name='cDNA Variant')
     variant_protein = models.CharField(max_length=200, null=True, name='Protein Variant')
