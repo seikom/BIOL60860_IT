@@ -6,9 +6,5 @@ from .models import Testvariant
 def Homepage(request):
      return render(request, 'DB/homepage.html', {})
 
-def Get_variant(request):
-
-    """Gets a specific variants according to the ID
-    """
-
-    return None
+def Variantpage(request):
+    return render(request, 'DB/variantpage.html', {})
