@@ -10,7 +10,7 @@ class Testvariant(models.Model):
     affected_relatives = models.BooleanField(blank=True)
     stage = models.IntegerField(choices=(("1","1"),("2","2"),("3","3")))
     description = models.CharField(max_length=500)
-    sequencer = models.CharField(cohices=(("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")))
+    sequencer = models.CharField(choices=(("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")))
     gene = models.CharField(max_length=10, blank=True)
     variant_cdna = models.CharField(max_length=200)
     variant_protein = models.CharField(max_length=200)
