@@ -6,8 +6,8 @@ from django.utils import timezone
 class Testvariant(models.Model):
     name = models.CharField(max_length=200)
     age = models.IntegerField()
-    proband = models.BooleanField(blank=True)
-    affected_relatives = models.BooleanField(blank=True)
+    proband = models.BooleanField()
+    affected_relatives = models.BooleanField()
     stage = models.IntegerField(choices=(("1","1"),("2","2"),("3","3")))
     description = models.CharField(max_length=500)
     sequencer = models.CharField(choices=(("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")), max_length=20)
