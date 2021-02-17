@@ -8,7 +8,7 @@ class Testvariant(models.Model):
     age = models.IntegerField()
     proband = models.BooleanField(choices=((True,"Y"),(False,"N")), null=True)
     affected_relatives = models.BooleanField(choices=((True,"Y"),(False,"N")), null=True)
-    stage = models.IntegerField(choices=(("1","1"),("2","2"),("3","3")), null=True)
+    stage = models.IntegerField(choices=((1,"1"),(2,"2"),(3,"3")), null=True)
     description = models.CharField(max_length=500, null=True)
     sequencer = models.CharField(choices=(("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")), max_length=20, null=True)
     gene = models.CharField(max_length=10, blank=True)
