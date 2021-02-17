@@ -3,18 +3,8 @@ from django.shortcuts import render
 from .models import Testvariant
 
 # Create your views here.
-
-def Test(request):
-
-    """displays test result
-    """
-
-    test = Testvariant.objects.all()
-
-    return (request, 'DB/main.html', {test : 'test'})
-
-
-
+def Homepage(request):
+     return render(request, 'DB/homepage.html', {})
 
 def Get_variant(request):
 
@@ -22,5 +12,3 @@ def Get_variant(request):
     """
 
     return None
-
-
