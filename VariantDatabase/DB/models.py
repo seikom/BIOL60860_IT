@@ -5,6 +5,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 class Testvariant(models.Model):
+<<<<<<< HEAD
     name = models.CharField(max_length=200, name='name')
     age = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(120)], name='age')
     proband = models.BooleanField(choices=((True,"Y"),(False,"N")), null=True, name='proband')
