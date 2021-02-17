@@ -5,12 +5,12 @@ from django.utils import timezone
 # Create your models here.
 class Testvariant(models.Model):
     name = models.CharField(max_length=200)
-    age = models.IntegerField(max_length=3, )
+    age = models.IntegerField()
     proband = models.BooleanField(blank=True)
     affected_relatives = models.BooleanField(blank=True)
     stage = models.IntegerField(choices=(("1","1"),("2","2"),("3","3")))
     description = models.CharField(max_length=500)
-    sequencer = models.CharField(choices=(("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")))
+    sequencer = models.CharField(choices=(("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")), max_length=20)
     gene = models.CharField(max_length=10, blank=True)
     variant_cdna = models.CharField(max_length=200)
     variant_protein = models.CharField(max_length=200)
