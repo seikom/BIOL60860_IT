@@ -8,7 +8,7 @@ class InputForm(forms.Form):
     age = forms.IntegerField(label='Patient age', validators=[MinValueValidator(0),MaxValueValidator(120)])
     proband = forms.BooleanField(label='Proband status')
     affected_relatives = forms.BooleanField(label='Affected Relatives?')
-    stage = forms.ChoiceField(label='Stage', choices=[("1","1"),("2","2"),("3","3")])
+    stage = forms.ChoiceField(label='Stage', choices=[("Not cancer", "Not cancer"),("1","1"),("2","2"),("3","3")])
     description = forms.CharField(label='Description', max_length=500)
     sequencer = forms.ChoiceField(label='Sequencer', choices=[("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")])
     gene = forms.CharField(label='Gene', max_length=10)
@@ -18,4 +18,3 @@ class InputForm(forms.Form):
     variant_genome = forms.CharField(label='Variant genome reference', max_length=200)
     code_pathogenicity = forms.ChoiceField(label="Pathogenicity Code", choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5")])
     codes_evidence = forms.CharField(label="ACGM evidence codes", max_length=200)
-    uploaded_time = forms.DateField(label="Uploaded time")
