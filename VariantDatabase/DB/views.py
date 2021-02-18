@@ -1,15 +1,15 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from .forms import InputForm
-from .models import Testvariant
+from .models import Patient_data, Variant_data
 
 # Create your views here.
 def Homepage(request):
-    Variants = Testvariant.objects.all()
+    Variants = Variant_data.objects.all()
     return render(request, 'DB/homepage.html', {'Variants': Variants})
 
 def Variantpage(request):
-    Variants = Testvariant.objects.all()
+    Variants = Variant_data.objects.all()
     return render(request, 'DB/variantpage.html', {'Variants': Variants})
 
 

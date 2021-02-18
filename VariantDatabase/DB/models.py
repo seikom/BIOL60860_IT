@@ -15,7 +15,7 @@ class Patient_data(models.Model):
 
 class Variant_data(models.Model):
     patient = models.ForeignKey(Patient_data, on_delete=models.CASCADE, null=True)
-    variant_id = models.AutoField(null=False)
+    variant_id = models.AutoField(primary_key=True, null=False)
     sequencer = models.CharField(choices=(("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")), max_length=20, null=True, name='sequencer')
     gene = models.CharField(max_length=10, null=True, name='gene', default='BRCA1')
     chrm = models.CharField(null=True, choices=(("1","1"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"),("7","7"),("8","8"),("9","9"),("10","10"),("11","11"),("12","12"),("13","13"),("14","14"),("15","15"),("16","16"),("17","17"),("18","18"),("19","19"),("20","20"),("21","21"),("22","22"),("X","X"),("Y","Y")), max_length=2, name='chrm', default="17")
