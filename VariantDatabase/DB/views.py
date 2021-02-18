@@ -14,7 +14,7 @@ def Homepage(request):
 
     return render(request, 'DB/homepage.html', {'Variants': Variants})
 
-def Variantpage(request, variant_id):
+def Variantpage(request, id):
 
     Variant = get_object_or_404(Variant_data, variant_id=variant_id)
 

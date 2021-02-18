@@ -39,9 +39,9 @@
         {% for Variant in Variants %}
             <tr>
               <td>{{Variant.gene}}</td>
-              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_cdna | truncatechars:20 }}</td>
-              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_protein | truncatechars:20 }}</td>
-              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_genome | truncatechars:20 }}</td>
+              <td><a href="/Variants/{{Variant.variant_id}}/">{{ Variant.variant_cdna | truncatechars:20 }}</td>
+              <td><a href="/Variants/{{Variant.variant_id}}/">{{ Variant.variant_protein | truncatechars:20 }}</td>
+              <td><a href="/Variants/{{Variant.variant_id}}/">{{ Variant.variant_genome | truncatechars:20 }}</td>
             </tr>
         {% endfor %}
 
