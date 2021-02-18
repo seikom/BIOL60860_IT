@@ -50,7 +50,7 @@ def Datainputpage(request):
                 
                 
             test, creation = Test_data.objects.get_or_create(
-                patient_id = patient, 
+                patient_id = patient,
                 sequencer = form.cleaned_data['sequencer'],
                 variant_id = variant,
                 uploaded_time = datetime.datetime.now())
@@ -58,10 +58,11 @@ def Datainputpage(request):
             interpretation, creation = Interpretation_data.objects.get_or_create(
                 variant_id = variant,
                 code_pathogenicity = form.cleaned_data['code_pathogenicity'],
-                codes_evidence = form.cleaned_data['codes_evidence']),
+                codes_evidence = form.cleaned_data['codes_evidence'],
                 uploaded_time = datetime.datetime.now())
 
-            #return HttpResponseRedirect('DB/datainputpage.html')
+                
+                #return HttpResponseRedirect('DB/datainputpage.html')
     else:
        form = InputForm()
 
@@ -72,10 +73,6 @@ def Bulkinputpage(request):
 
 
     return render(request, 'DB/bulkinputpage.html', {})
-
-
-
-
 
 
 class SearchView(ListView):
@@ -92,38 +89,3 @@ class SearchView(ListView):
        else:
            result = None
        return result
-
-"""
-I'll have a look at this tomorrow -Sa"
-    def search(request):
-
-
-            # make empty form
-            form = SearchForm()
-
-            message = None
-
-            # if form submitted
-            if request.method == 'POST':
-                form = SearchForm(request.POST)
-
-                if form.is_valid():
-                    
-                    search_input = form.cleaned_data['search_input'].upper().strip()
-
-                    # check if we've searched for sample
-                    x = re.search("^\d{2}M\d{5}", search_input)
-
-                    if x != None:
-
-                        samples = Sample.objects.filter(sample_name_only= search_input)
-
-                        if len(samples) == 0:
-
-                            message = f'Cannot find a sample with id {search_input}'
-                            return render(request, 'acmg_db/search.html', {'form': form, 'message': message})   
-
-                        else:   
-
-                            return redirect('view_sample', pk=search_input)
-"""
