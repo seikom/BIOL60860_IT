@@ -20,6 +20,3 @@ class Testvariant(models.Model):
     code_pathogenicity = models.CharField(blank=True, choices=(("1","1"),("2","2"),("3","3"),("4","4"),("5","5")), max_length=1, name="code_pathogenicity")
     codes_evidence = models.CharField(max_length=200, blank=True, name="codes_evidence")
     uploaded_time = models.DateTimeField(blank=True, null=True, name="uploaded_time")
-#todo: split the table into separate tables
-    def __str__(self):
-        return self.name
