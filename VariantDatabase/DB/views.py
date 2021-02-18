@@ -47,8 +47,12 @@ def Datainputpage(request):
                 variant_protein = form.cleaned_data['variant_protein'],
                 variant_genome = form.cleaned_data['variant_genome'],
                 code_pathogenicity = form.cleaned_data['code_pathogenicity'],
-                codes_evidence = form.cleaned_data['codes_evidence'])
+                codes_evidence = form.cleaned_data['codes_evidence'],
                 uploaded_time = datetime.datetime.now())
+                
+            add_test = Test_data.objects.create()
+            
+            add_interpretation = Interpretation_data.objects.create()
 
             #return HttpResponseRedirect('DB/datainputpage.html')
     else:
