@@ -20,7 +20,22 @@ def Datainputpage(request):
         form = InputForm(request.POST)
 
         if form.is_valid():
-            pass
+            name = form.cleaned_data['name']
+            age = form.cleaned_data['age']
+            proband = form.cleaned_data['proband']
+            affected_relatives = form.cleaned_data['affected_relatives']
+            stage = form.cleaned_data['stage']
+            description = form.cleaned_data['description']
+            sequencer = form.cleaned_data['sequencer']
+            gene = form.cleaned_data['gene']
+            chrm = form.cleaned_data['chrm']
+            variant_cdna = form.cleaned_data['variant_cdna']
+            variant_protein = form.cleaned_data['variant_protein']
+            variant_genome = form.cleaned_data['variant_genome']
+            code_pathogenicity = form.cleaned_data['code_pathogenicity']
+            codes_evidence = form.cleaned_data['codes_evidence']
+            uploaded_time = form.cleaned_data['uploaded_time']
+            print(name)
             return HttpResponseRedirect('/None/')
     else:
        form = InputForm()
