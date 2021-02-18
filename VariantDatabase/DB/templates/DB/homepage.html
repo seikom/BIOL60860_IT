@@ -4,25 +4,47 @@
 	</head>
 
         <p>Homepage to have the main search boxes and table for variants</p>
+
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Proband</th>
+          <th>Affected relatives</th>
+          <th>Stage</th>
+          <th>Variant description</th>
+          <th>Sequencer</th>
+          <th>Gene</th>
+          <th>Chromosome</th>
+          <th>cDNA nomenclature</th>
+          <th>protein nomenclature</th>
+          <th>genomic nomenclature</th>
+          <th>Pathogenicity code</th>
+          <th>Evidence</th>
+          <th>Uploaded time</th>
+        </tr>
+
+
         {% for Variant in Variants %}
-            <div>
-                {{Variant.name}}
-                {{Variant.age}}
-                {{Variant.proband}}
-                {{Variant.affected_relatives}}
-                {{Variant.stage}}
-                {{Variant.description}}
-                {{Variant.sequencer}}
-                {{Variant.gene}}
-                {{Variant.chrm}}
-                {{Variant.variant_cdna}}
-                {{Variant.variant_protein}}
-                {{Variant.variant_genome}}
-                {{Variant.code_pathogenicity}}
-                {{Variant.codes_evidence}}
-                {{Variant.uploaded_time}}
-                
-            </div>
+            <tr>
+                <td>{{text|linebreaks}}</td>
+                <td>{{Variant.name}}</td>
+                <td>{{Variant.age}}</td>
+                <td>{{Variant.proband}}</td>
+                <td>{{Variant.affected_relatives}}</td>
+                <td>{{Variant.stage}}</td>
+                <td>{{Variant.description}}</td>
+                <td>{{Variant.sequencer}}</td>
+                <td>{{Variant.gene}}</td>
+                <td>{{Variant.chrm}}</td>
+                <td>{{Variant.variant_cdna}}</td>
+                <td>{{Variant.variant_protein}}</td>
+                <td>{{Variant.variant_genome}}</td>
+                <td>{{Variant.code_pathogenicity}}</td>
+                <td>{{Variant.codes_evidence}}</td>
+                <td>{{Variant.uploaded_time}}</td>
+                <td>{{text|linebreaks}}</td>
+
+            </tr>
         {% endfor %}
 
 	</html>
