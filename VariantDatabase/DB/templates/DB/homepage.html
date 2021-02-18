@@ -1,52 +1,76 @@
+
+{% load static %}
+
 <html>
         <head>
         <title>Variant database</title>
-	</head>
+		</head>
+	   	<!-- Required meta tags -->
+   		 <meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    	<!-- Bootstrap and datatables CSS -->
+    	<link rel="stylesheet" type="text/css" href="{% static "DataTables/Bootstrap-4-4.1.1/css/bootstrap.min.css" %}"/>
+    	<link rel="stylesheet" type="text/css" href="{% static "DataTables/datatables.min.css" %}"/>
 
-        <p>Homepage to have the main search boxes and table for variants</p>
-        <tr>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Proband</th>
-          <th>Affected relatives</th>
-          <th>Stage</th>
-          <th>Variant description</th>
-          <th>Sequencer</th>
-          <th>Gene</th>
-          <th>Chromosome</th>
-          <th>cDNA nomenclature</th>
-          <th>protein nomenclature</th>
-          <th>genomic nomenclature</th>
-          <th>Pathogenicity code</th>
-          <th>Evidence</th>
-          <th>Uploaded time</th>
-        </tr>
+    	<!-- jQuery, bootstrap and datatables javascript - jQuery must go first! -->
+    	<script type="text/javascript" src="{% static "DataTables/jQuery-3.3.1/jQuery-3.3.1.min.js" %}"></script>
+    	<script type="text/javascript" src="{% static "DataTables/datatables.min.js" %}"></script>
+    	<script type="text/javascript" src="{% static "DataTables/Bootstrap-4-4.1.1/js/bootstrap.min.js" %}"></script>
 
-        {% for Patient in Patients %}
-            <tr>
-                <td>{{text|linebreaks}}</td>
-                <td>{{Patient.name}}</td>
-                <td>{{Patient.age}}</td>
-                <td>{{Patient.proband}}</td>
-                <td>{{Patient.affected_relatives}}</td>
-                <td>{{Patient.stage}}</td>
-                <td>{{Patient.description}}</td>
-            </tr>
-        {% endfor %}
+        	</div> 
+    	<!-- Navbar -->
+    	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #c0392b;">
+      	<a class="navbar-brand" href="#"><b>VariantDB</b></a>
+      	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      	</button>
+     	 <div class="collapse navbar-collapse" id="navbarText">
+        	<ul class="navbar-nav mr-auto">
+          	<li class="nav-item">
+            <a class="nav-link" href="{% url 'Homepage' %}">Home</a>
+          	</li>
+          	<li class="nav-item">
+            <a class="nav-link" href="{% url 'Bulkinputpage' %}"> Manual Import</a>
+          	</li>
+          	<li class="nav-item">
+            <a class="nav-link" href="{% url 'Datainputpage' %}">CSV import</a>
+          	</li>
+        	</ul>
+     	 </div>
+    	</nav>
+   		 <br>
+
+          <div>
+     		<p> VaraintDB provides a software solution to log all classified variants within the laboratory.
+
+        	For any troubleshooting enquiries please contact bioinformatics.team@group2.co.uk
+
+        	</p>
+      	</div>
+		<table id="summary_table" class="table table-hover table-bordered table-responsive">
+		<div>
+
+		</div>div
+
+		<thead>
+		    <tr>
+		      <th>ID</th>
+		      <th>Gene</th>
+		      <th>Variant</th>
+		      <th>HGVSc</th>
+		      <th>HGVSp</th>
+		    </tr>
+		</thead>
+
 
         {% for Variant in Variants %}
             <tr>
-                <td>{{text|linebreaks}}</td>
-                <td>{{Variant.sequencer}}</td>
+            	<td><a href="{% url 'Variantpage' %}">{{ Variant.gene | truncatechars:20 }}</td>
                 <td>{{Variant.gene}}</td>
-                <td>{{Variant.chrm}}</td>
-                <td>{{Variant.variant_cdna}}</td>
-                <td>{{Variant.variant_protein}}</td>
-                <td>{{Variant.variant_genome}}</td>
-                <td>{{Variant.code_pathogenicity}}</td>
-                <td>{{Variant.codes_evidence}}</td>
-                <td>{{Variant.uploaded_time}}</td>
-                <td>{{text|linebreaks}}</td>
+               <td>{{Variant.variant_genome}}</td>
+               <td>{{Variant.variant_cdna}</td>
+               <td>{{Variant.variant_protein}}</td>
             </tr>
         {% endfor %}
 
