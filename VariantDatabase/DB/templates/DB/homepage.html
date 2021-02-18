@@ -34,7 +34,6 @@
 		    </tr>
 		</thead>
 
-
         {% for Variant in Variants %}
             <tr>
             	<td><a href="{% url 'Variantpage' %}">{{ Variant.gene | truncatechars:20 }}</td>
