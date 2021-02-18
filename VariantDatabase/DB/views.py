@@ -9,3 +9,9 @@ def Homepage(request):
 def Variantpage(request):
     Variants = Testvariant.objects.all()
     return render(request, 'DB/variantpage.html', {'Variants': Variants})
+
+def Datainputpage(request):
+    return render(request, 'DB/datainputpage.html', {})
+
+def Bulkinputpage(request):
+    return render(request, 'DB/bulkinputpage.html', {})
