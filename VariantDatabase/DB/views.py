@@ -47,12 +47,13 @@ def Datainputpage(request):
                 
                 
             test, creation = Test_data.objects.get_or_create(
-                patient = patient, 
+                patient_id = patient, 
                 sequencer = form.cleaned_data['sequencer'],
-                variant = variant,
+                variant_id = variant,
                 uploaded_time = datetime.datetime.now())
             
             interpretation, creation = Interpretation_data.objects.get_or_create(
+                variant_id = variant,
                 code_pathogenicity = form.cleaned_data['code_pathogenicity'],
                 codes_evidence = form.cleaned_data['codes_evidence'],
                 uploaded_time = datetime.datetime.now())
