@@ -23,24 +23,25 @@
 		<div>
 
 		</div>
+
+
+    <div class="table-responsive">
     <table class="table table-striped">
 		<thead>
 		    <tr>
-		      <th>ID</th>
-		      <th>Gene</th>
-		      <th>Variant</th>
-		      <th>HGVSc</th>
-		      <th>HGVSp</th>
+          <th>Gene</th>
+		      <th>cDNA nomenclature</th>
+		      <th>Protein nomenclature</th>
+          <th>Genomic nomenclature</th>
 		    </tr>
 		</thead>
 
         {% for Variant in Variants %}
             <tr>
-            	<td><a href="{% url 'Variantpage' %}">{{ Variant.gene | truncatechars:20 }}</td>
-                <td>{{Variant.gene}}</td>
-               <td>{{Variant.variant_genome}}</td>
-               <td>{{Variant.variant_cdna}}</td>
-               <td>{{Variant.variant_protein}}</td>
+              <td>{{Variant.gene}}</td>
+              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_cdna | truncatechars:20 }}</td>
+              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_protein | truncatechars:20 }}</td>
+              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_genome | truncatechars:20 }}</td>
             </tr>
         {% endfor %}
 
