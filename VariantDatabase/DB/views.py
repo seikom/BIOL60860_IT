@@ -12,7 +12,7 @@ def Homepage(request):
 
     Variants = Variant_data.objects.all()
 
-    return render(request, 'DB/Homepage.html', {'Variants': Variants})
+    return render(request, 'DB/homepage.html', {'Variants': Variants})
 
 def Variantpage(request, variant_id):
 
