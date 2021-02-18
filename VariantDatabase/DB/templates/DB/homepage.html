@@ -1,4 +1,11 @@
+
+
+{% extends 'DB/base.html' %}
 {% load static %}
+
+
+{% block content %}
+{% load render_table from django_tables2 %}
 
 <html>
         <head>
@@ -17,16 +24,9 @@
     	<script type="text/javascript" src="{% static "DataTables/datatables.min.js" %}"></script>
     	<script type="text/javascript" src="{% static "DataTables/Bootstrap-4-4.1.1/js/bootstrap.min.js" %}"></script>
 
-        	</div>
-
-		<table id="summary_table" class="table table-hover table-bordered table-responsive">
-		<div>
-
-		</div>
-
 
     <div class="table-responsive">
-    <table class="table table-striped">
+    <table class="table table-hover">
 		<thead>
 		    <tr>
           <th>Gene</th>
@@ -46,3 +46,4 @@
         {% endfor %}
 
 	</html>
+{% endblock %}
