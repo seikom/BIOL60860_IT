@@ -18,4 +18,4 @@ class InputForm(forms.Form):
     variant_genome = forms.CharField(label='Variant genome reference', max_length=200)
     code_pathogenicity = forms.ChoiceField(label="Pathogenicity Code", choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5")])
     codes_evidence = forms.CharField(label="ACGM evidence codes", max_length=200)
-    uploaded_time = forms.DateTimeField(label="Uploaded time", input_formats=['%Y-%m-%d %H:%M'])
+    uploaded_time = forms.DateField(label="Uploaded time")

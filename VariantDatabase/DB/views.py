@@ -8,9 +8,10 @@ def Homepage(request):
 
     Variants = Variant_data.objects.select_related()
     Patients = Patient_data.objects.select_related()
+    
+    context = {'Patients': Patients, 'Variants': Variants}
 
-    return render(request, 'DB/homepage.html', {'Patients': Patients})
-    return render(request, 'DB/homepage.html', {'Variants': Variants})
+    return render(request, 'DB/homepage.html', context)
 
 def Variantpage(request):
     Patients = Patient_data.objects.all()
