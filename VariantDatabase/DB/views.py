@@ -38,21 +38,24 @@ def Datainputpage(request):
                 description = form.cleaned_data['description']
             )
 
-            add_variant = Variant_data.objects.create(
-                patient = patient,
-                sequencer = form.cleaned_data['sequencer'],
+            variant, creation = Variant_data.objects.get_or_create(
                 gene = form.cleaned_data['gene'],
                 chrm = form.cleaned_data['chrm'],
                 variant_cdna = form.cleaned_data['variant_cdna'],
                 variant_protein = form.cleaned_data['variant_protein'],
-                variant_genome = form.cleaned_data['variant_genome'],
+                variant_genome = form.cleaned_data['variant_genome'])
+                
+                
+            test, creation = Test_data.objects.get_or_create(
+                patient = patient, 
+                sequencer = form.cleaned_data['sequencer'],
+                variant = variant,
+                uploaded_time = datetime.datetime.now())
+            
+            interpretation, creation = Interpretation_data.objects.get_or_create(
                 code_pathogenicity = form.cleaned_data['code_pathogenicity'],
                 codes_evidence = form.cleaned_data['codes_evidence'],
                 uploaded_time = datetime.datetime.now())
-                
-            add_test = Test_data.objects.create()
-            
-            add_interpretation = Interpretation_data.objects.create()
 
             #return HttpResponseRedirect('DB/datainputpage.html')
     else:
