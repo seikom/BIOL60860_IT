@@ -2,9 +2,9 @@
 
 {% extends 'DB/base.html' %}
 {% load static %}
-
-
+{% load crispy_forms_tags %}
 {% block content %}
+
 
 
 <html>
@@ -37,20 +37,70 @@
 		<thead>
 		    <tr>
           <th>Gene</th>
-		      <th>cDNA nomenclature</th>
-		      <th>Protein nomenclature</th>
-          <th>Genomic nomenclature</th>
+          <th>Variant</th>
+		      <th>cDNA HGVS</th>
+		      <th>Protein HGVS</th>
 		    </tr>
 		</thead>
 
         {% for Variant in Variants %}
             <tr>
               <td>{{Variant.gene}}</td>
-              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_cdna | truncatechars:20 }}</td>
-              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_protein | truncatechars:20 }}</td>
-              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_genome | truncatechars:20 }}</td>
+              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_genome | truncatechars:20 }}</td>              
+              <td><a >{{ Variant.variant_cdna | truncatechars:20 }}</td>
+              <td><a >{{ Variant.variant_protein | truncatechars:20 }}</td>
+
             </tr>
         {% endfor %}
 
 	</html>
 {% endblock %}
+
+
+
+<br><br>
+<center>
+  <div>
+  <h4> Import variants from file </h4>
+  <br>
+  
+  {% crispy form %}
+
+  <p class="text-muted">Import file must be the .tsv file outputted by the Variant Database. If there are any errors, the data will not be uploaded.</p>
+
+  {% if error %}
+    {% for e in error %}
+      <div class="alert alert-danger col-lg-2-8">
+        {{ e }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if success %}
+    {% for s in success %}
+      <div class="alert alert-success col-lg-2-8">
+        {{ s }} <a href={% url 'pending_classifications' %}{{ params }}>View here.</a>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if warn %}
+    {% for w in warn %}
+      <div class="alert alert-warning col-lg-2-8">
+        {{ w }}
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+
+  <br>
+  <h5><a href="/manual_input">Input variant details manually</a></h5>
+  <br><br>
+</center>
+<script>
+$(document).ready(function(){
+$("#file-upload-form").on("submit", function () {
+    $(this).find(":submit").prop("disabled", true);
+});
+});
+</script>

@@ -5,7 +5,10 @@ from .forms import InputForm
 from .models import Patient_data, Variant_data, Test_data, Interpretation_data
 from django.shortcuts import render
 from django.views.generic import ListView
-
+from crispy_forms.bootstrap import Field
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit, Layout, HTML
+from django.contrib.auth.models import User
 
 # Create your views here.
 def Homepage(request):
