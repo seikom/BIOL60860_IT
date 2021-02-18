@@ -2,13 +2,15 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from .forms import InputForm
 from .models import Patient_data, Variant_data
+from django.shortcuts import render
+from django.views.generic import ListView
 
 # Create your views here.
 def Homepage(request):
 
     Variants = Variant_data.objects.select_related()
     Patients = Patient_data.objects.select_related()
-    
+
     context = {'Patients': Patients, 'Variants': Variants}
 
     return render(request, 'DB/homepage.html', context)
