@@ -5,7 +5,10 @@ from .forms import InputForm
 from .models import Patient_data, Variant_data, Test_data, Interpretation_data
 from django.shortcuts import render
 from django.views.generic import ListView
-
+from crispy_forms.bootstrap import Field
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit, Layout, HTML
+from django.contrib.auth.models import User
 
 # Create your views here.
 def Homepage(request):
@@ -47,7 +50,7 @@ def Datainputpage(request):
                 
                 
             test, creation = Test_data.objects.get_or_create(
-                patient_id = patient, 
+                patient_id = patient,
                 sequencer = form.cleaned_data['sequencer'],
                 variant_id = variant,
                 uploaded_time = datetime.datetime.now())
@@ -58,7 +61,8 @@ def Datainputpage(request):
                 codes_evidence = form.cleaned_data['codes_evidence'],
                 uploaded_time = datetime.datetime.now())
 
-            #return HttpResponseRedirect('DB/datainputpage.html')
+                
+                #return HttpResponseRedirect('DB/datainputpage.html')
     else:
        form = InputForm()
 
@@ -69,3 +73,19 @@ def Bulkinputpage(request):
 
 
     return render(request, 'DB/bulkinputpage.html', {})
+
+
+class SearchView(ListView):
+    model = Variant_data
+    template_name = 'homepage.html'
+    context_object_name = 'all_search_results'
+
+    def get_queryset(self):
+       result = super(SearchView, self).get_queryset()
+       query = self.request.GET.get('search')
+       if query:
+          postresult = Variant_data.objects.filter(title__contains=query)
+          result = postresult
+       else:
+           result = None
+       return result

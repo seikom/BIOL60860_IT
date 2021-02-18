@@ -1,11 +1,9 @@
-
-
 {% extends 'DB/base.html' %}
 {% load static %}
-
-
+{% load crispy_forms_tags %}
 {% block content %}
 {% load render_table from django_tables2 %}
+
 
 <html>
         <head>
@@ -30,20 +28,27 @@
 		<thead>
 		    <tr>
           <th>Gene</th>
-		      <th>cDNA nomenclature</th>
-		      <th>Protein nomenclature</th>
-          <th>Genomic nomenclature</th>
+          <th>Variant</th>
+		      <th>cDNA HGVS</th>
+		      <th>Protein HGVS</th>
 		    </tr>
 		</thead>
 
         {% for Variant in Variants %}
             <tr>
               <td>{{Variant.gene}}</td>
-              <td><a href="/Variants/{{Variant.variant_id}}/">{{ Variant.variant_cdna | truncatechars:20 }}</td>
-              <td><a href="/Variants/{{Variant.variant_id}}/">{{ Variant.variant_protein | truncatechars:20 }}</td>
               <td><a href="/Variants/{{Variant.variant_id}}/">{{ Variant.variant_genome | truncatechars:20 }}</td>
+              <td>{{ Variant.variant_cdna | truncatechars:20 }}</td>
+              <td>{{ Variant.variant_protein | truncatechars:20 }}</td>
+              
             </tr>
         {% endfor %}
+    <form class="SearchView" method="GET" action="" >
+    <input class="SearchView" type="search" name="search"> 
+    <button class="SearchView" type="submit"> Search Variant </button>
+</form>
 
 	</html>
 {% endblock %}
+
+
