@@ -8,7 +8,7 @@ class InputForm(forms.Form):
     age = forms.IntegerField(label='Patient age', validators=[MinValueValidator(0),MaxValueValidator(120)])
     proband = forms.BooleanField(label='Proband status')
     affected_relatives = forms.BooleanField(label='Affected Relatives?')
-    stage = forms.ChoiceField(label='Stage', choices=[("1","1"),("2","2"),("3","3")])
+    stage = forms.ChoiceField(label='Stage', choices=[("Not cancer", "Not cancer"),("1","1"),("2","2"),("3","3")])
     description = forms.CharField(label='Description', max_length=500)
     sequencer = forms.ChoiceField(label='Sequencer', choices=[("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")])
     gene = forms.CharField(label='Gene', max_length=10)
