@@ -1,5 +1,6 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
+from .forms import InputForm
 from .models import Testvariant
 
 # Create your views here.
@@ -9,3 +10,19 @@ def Homepage(request):
 def Variantpage(request):
     Variants = Testvariant.objects.all()
     return render(request, 'DB/variantpage.html', {'Variants': Variants})
+
+
+def Inptut(request):
+
+    if request.method == 'POST':
+        
+        form = InputForm(request.POST)
+        
+        if form.is_valid():
+            pass
+            return HttpResponseRedirect('/None/')
+        else:
+           form = InputForm()
+
+    return render(request, 'DB/input.html', {'form': form})
+
