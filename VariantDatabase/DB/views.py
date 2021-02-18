@@ -8,10 +8,9 @@ from django.views.generic import ListView
 # Create your views here.
 def Homepage(request):
 
-    Variants = Variant_data.objects.select_related()
+    Variants = Variant_data.objects.all()
 
-
-    return render(request, 'DB/homepage.html', context)
+    return render(request, 'DB/homepage.html', {'Variants': Variants})
 
 def Variantpage(request):
     Patients = Patient_data.objects.all()
