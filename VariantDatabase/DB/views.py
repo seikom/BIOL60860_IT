@@ -14,14 +14,20 @@ def Variantpage(request):
 
 def Datainputpage(request):
 
-    if request.method == 'POST':
+    #if request.method == 'POST':
 
-        form = InputForm(request.POST)
+        #form = InputForm(request.POST)
 
-        if form.is_valid():
-            pass
-            return HttpResponseRedirect('/None/')
-        else:
-           form = InputForm()
+        #if form.is_valid():
+            #pass
+            #return HttpResponseRedirect('/None/')
+        #else:
+           #form = InputForm()
 
-    return render(request, 'DB/datainputpage.html', {'form': form})
+    return render(request, 'DB/datainputpage.html', {})
+
+def Bulkinputpage(request):
+
+
+
+    return render(request, 'DB/bulkinputpage.html', {})
