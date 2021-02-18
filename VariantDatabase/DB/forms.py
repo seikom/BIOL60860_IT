@@ -2,12 +2,22 @@ from django import forms
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+list_criteria_population = [('BA1','BA1'), ('BS1', 'BS1'), ('BS2', 'BS2'), ('PM2','PM2'), ('PS4','PS4')]
+list_criteria_comp = [('BP4','BP4'),('BP1','BP1'),('BP7','BP7'),('PP3','PP3'),('PM5','PM5'),('PM4','PM4'),('PS1','PS1'),('PVS1','PVS1')]
+list_criteria_func = [('BS3','BS3'),('PP2','PP2'),('PM1','PM1'),('PS3','PS3')]
+list_criteria_segregation = [('BS4','BS4'),('PP1','PP1')]
+list_cliteria_denovo = [('PM6','PM6'),('PS2','PS2')]
+list_criteria_allele = [('BP2','BP2'),('PM3','PM3')]
+list_criteria_other = [('BP6','BP6'),('PP5','PP5'),('BP5','BP5'),('PP4','PP4')]
+
+list_all_criteria = list_criteria_population + list_criteria_comp + list_criteria_func + list_criteria_segregation + list_cliteria_denovo + list_criteria_allele + list_criteria_other
+
 class InputForm(forms.Form):
 
     name = forms.CharField(label='Patient name', max_length=200)
     age = forms.IntegerField(label='Patient age', validators=[MinValueValidator(0),MaxValueValidator(120)])
-    proband = forms.BooleanField(label='Proband status')
-    affected_relatives = forms.BooleanField(label='Affected Relatives?')
+    proband = forms.BooleanField(required=False, label='Proband status')
+    affected_relatives = forms.BooleanField(required=False, label='Affected Relatives?')
     stage = forms.ChoiceField(label='Stage', choices=[("Not cancer", "Not cancer"),("1","1"),("2","2"),("3","3")])
     description = forms.CharField(label='Description', max_length=500)
     sequencer = forms.ChoiceField(label='Sequencer', choices=[("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")])
@@ -17,4 +27,6 @@ class InputForm(forms.Form):
     variant_protein = forms.CharField(label='Variant Protein', max_length=200)
     variant_genome = forms.CharField(label='Variant genome reference', max_length=200)
     code_pathogenicity = forms.ChoiceField(label="Pathogenicity Code", choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5")])
-    codes_evidence = forms.CharField(label="ACGM evidence codes", max_length=200)
+    #codes_evidence = forms.CharField(label="ACGM evidence codes", max_length=200, widget=forms.Select(choices=list_criteria))
+    codes_evidence = forms.MultipleChoiceField(label="ACMG evidence codes",
+                                     widget=forms.CheckboxSelectMultiple, choices=list_all_criteria)
