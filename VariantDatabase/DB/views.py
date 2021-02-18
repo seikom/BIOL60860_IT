@@ -15,13 +15,13 @@ def Homepage(request):
 
     Variants = Variant_data.objects.all()
 
-    return render(request, 'DB/Homepage.html', {'Variants': Variants})
+    return render(request, 'DB/homepage.html', {'Variants': Variants})
 
-def Variantpage(request):
-    Patients = Patient_data.objects.all()
-    Variants = Variant_data.objects.all()
-    return render(request, 'DB/variantpage.html', {'Patients': Patients})
-    return render(request, 'DB/variantpage.html', {'Variants': Variants})
+def Variantpage(request, variant_id):
+
+    Variant = get_object_or_404(Variant_data, variant_id=variant_id)
+
+    return render(request, 'DB/variantpage.html', {'Variant': Variant})
 
 
 def Datainputpage(request):
@@ -58,7 +58,7 @@ def Datainputpage(request):
             interpretation, creation = Interpretation_data.objects.get_or_create(
                 variant_id = variant,
                 code_pathogenicity = form.cleaned_data['code_pathogenicity'],
-                codes_evidence = form.cleaned_data['codes_evidence'],
+                codes_evidence = form.cleaned_data['codes_evidence']),
                 uploaded_time = datetime.datetime.now())
 
             #return HttpResponseRedirect('DB/datainputpage.html')
