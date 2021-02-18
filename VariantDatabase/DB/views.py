@@ -1,9 +1,11 @@
+import datetime
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from .forms import InputForm
-from .models import Patient_data, Variant_data
+from .models import Patient_data, Variant_data, Test_data, Interpretation_data
 from django.shortcuts import render
 from django.views.generic import ListView
+
 
 # Create your views here.
 def Homepage(request):
@@ -20,6 +22,7 @@ def Variantpage(request):
 
 
 def Datainputpage(request):
+
 
     if request.method == 'POST':
 
@@ -44,8 +47,12 @@ def Datainputpage(request):
                 variant_protein = form.cleaned_data['variant_protein'],
                 variant_genome = form.cleaned_data['variant_genome'],
                 code_pathogenicity = form.cleaned_data['code_pathogenicity'],
-                codes_evidence = form.cleaned_data['codes_evidence'])
-                #uploaded_time = form.cleaned_data['uploaded_time'])
+                codes_evidence = form.cleaned_data['codes_evidence'],
+                uploaded_time = datetime.datetime.now())
+                
+            add_test = Test_data.objects.create()
+            
+            add_interpretation = Interpretation_data.objects.create()
 
             #return HttpResponseRedirect('DB/datainputpage.html')
     else:
