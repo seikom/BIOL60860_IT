@@ -10,7 +10,7 @@ class Patient_data(models.Model):
     age = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(120)], name='age')
     proband = models.BooleanField(choices=((True,"Y"),(False,"N")), null=True, name='proband', blank=True)
     affected_relatives = models.BooleanField(choices=((True,"Y"),(False,"N")), null=True, name='affected_relatives', blank=True)
-    stage = models.CharField(choices=(("Not cancer", "Not cancer"),("1","1"),(2,"2"),(3,"3")), name='stage', max_length=20)
+    stage = models.CharField(choices=(("Not cancer", "Not cancer"),("1","1"),("2","2"),("3","3")), name='stage', max_length=20, null=True)
     description = models.CharField(max_length=500, null=True, name='description')
 
 
