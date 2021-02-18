@@ -14,11 +14,11 @@ def Homepage(request):
 
     return render(request, 'DB/homepage.html', {'Variants': Variants})
 
-def Variantpage(request):
-    Patients = Patient_data.objects.all()
-    Variants = Variant_data.objects.all()
-    return render(request, 'DB/variantpage.html', {'Patients': Patients})
-    return render(request, 'DB/variantpage.html', {'Variants': Variants})
+def Variantpage(request, variant_id):
+
+    Variant = get_object_or_404(Variant_data, variant_id=variant_id)
+
+    return render(request, 'DB/variantpage.html', {'Variant': Variant})
 
 
 def Datainputpage(request):
