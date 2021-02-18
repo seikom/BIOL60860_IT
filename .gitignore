@@ -4,3 +4,4 @@ env
 __pycache__
 db.sqlite3
 
+/VariantDatabase/DB/migrations/0001_initial.py
