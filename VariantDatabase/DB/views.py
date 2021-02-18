@@ -72,3 +72,58 @@ def Bulkinputpage(request):
 
 
     return render(request, 'DB/bulkinputpage.html', {})
+
+
+
+
+
+
+class SearchView(ListView):
+    model = Variant_data
+    template_name = 'homepage.html'
+    context_object_name = 'all_search_results'
+
+    def get_queryset(self):
+       result = super(SearchView, self).get_queryset()
+       query = self.request.GET.get('search')
+       if query:
+          postresult = Variant_data.objects.filter(title__contains=query)
+          result = postresult
+       else:
+           result = None
+       return result
+
+"""
+I'll have a look at this tomorrow -Sa"
+    def search(request):
+
+
+            # make empty form
+            form = SearchForm()
+
+            message = None
+
+            # if form submitted
+            if request.method == 'POST':
+                form = SearchForm(request.POST)
+
+                if form.is_valid():
+                    
+                    search_input = form.cleaned_data['search_input'].upper().strip()
+
+                    # check if we've searched for sample
+                    x = re.search("^\d{2}M\d{5}", search_input)
+
+                    if x != None:
+
+                        samples = Sample.objects.filter(sample_name_only= search_input)
+
+                        if len(samples) == 0:
+
+                            message = f'Cannot find a sample with id {search_input}'
+                            return render(request, 'acmg_db/search.html', {'form': form, 'message': message})   
+
+                        else:   
+
+                            return redirect('view_sample', pk=search_input)
+"""
