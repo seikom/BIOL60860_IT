@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Patient, Testvariant, Interpretation
+from .models import Patient_data, Variant_data
 
-admin.site.register(Patient)
-admin.site.register(Testvariant)
-admin.site.register(Interpretation)
+admin.site.register(Patient_data)
+admin.site.register(Variant_data)
