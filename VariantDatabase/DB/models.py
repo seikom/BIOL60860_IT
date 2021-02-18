@@ -13,9 +13,6 @@ class Patient(models.Model):
     stage = models.IntegerField(choices=((1,"1"),(2,"2"),(3,"3")), null=True, name='stage')
     description = models.CharField(max_length=500, null=True, name='description')
 
-    def __str__(self):
-        return str(self.patient_id)
-
 class Testvariant(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True)
     sequencer = models.CharField(choices=(("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")), max_length=20, null=True, name='sequencer')
@@ -24,9 +21,6 @@ class Testvariant(models.Model):
     variant_cdna = models.CharField(max_length=200, null=True, name='variant_cdna')
     variant_protein = models.CharField(max_length=200, null=True, name='variant_protein')
     variant_genome = models.CharField(blank=False, max_length=200, null=True, name='variant_genome')
-
-    def __str__(self):
-        return self.variant_cdna
     # todo: either one of cDNA and genome coordinate is required input rather than both?
 
 class Interpretation(models.Model):
@@ -34,6 +28,3 @@ class Interpretation(models.Model):
     code_pathogenicity = models.CharField(blank=True, choices=(("1","1"),("2","2"),("3","3"),("4","4"),("5","5")), max_length=1, name="code_pathogenicity")
     codes_evidence = models.CharField(max_length=200, blank=True, name="codes_evidence")
     #uploaded_time = models.DateTimeField(blank=True, null=True, name="uploaded_time")
-
-    def __str__(self):
-        return self.code_pathogenicity
