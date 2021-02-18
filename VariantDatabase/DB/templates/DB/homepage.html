@@ -4,7 +4,6 @@
 	</head>
 
         <p>Homepage to have the main search boxes and table for variants</p>
-
         <tr>
           <th>Name</th>
           <th>Age</th>
@@ -23,15 +22,21 @@
           <th>Uploaded time</th>
         </tr>
 
+        {% for Patient in Patients %}
+            <tr>
+                <td>{{text|linebreaks}}</td>
+                <td>{{Patient.name}}</td>
+                <td>{{Patient.age}}</td>
+                <td>{{Patient.proband}}</td>
+                <td>{{Patient.affected_relatives}}</td>
+                <td>{{Patient.stage}}</td>
+                <td>{{Patient.description}}</td>
+            </tr>
+        {% endfor %}
+
         {% for Variant in Variants %}
             <tr>
                 <td>{{text|linebreaks}}</td>
-                <td>{{Variant.name}}</td>
-                <td>{{Variant.age}}</td>
-                <td>{{Variant.proband}}</td>
-                <td>{{Variant.affected_relatives}}</td>
-                <td>{{Variant.stage}}</td>
-                <td>{{Variant.description}}</td>
                 <td>{{Variant.sequencer}}</td>
                 <td>{{Variant.gene}}</td>
                 <td>{{Variant.chrm}}</td>

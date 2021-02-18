@@ -5,11 +5,17 @@ from .models import Patient_data, Variant_data
 
 # Create your views here.
 def Homepage(request):
-    Variants = Variant_data.objects.all()
+
+    Variants = Variant_data.objects.select_related()
+    Patients = Patient_data.objects.select_related()
+
+    return render(request, 'DB/homepage.html', {'Patients': Patients})
     return render(request, 'DB/homepage.html', {'Variants': Variants})
 
 def Variantpage(request):
+    Patients = Patient_data.objects.all()
     Variants = Variant_data.objects.all()
+    return render(request, 'DB/variantpage.html', {'Patients': Patients})
     return render(request, 'DB/variantpage.html', {'Variants': Variants})
 
 
