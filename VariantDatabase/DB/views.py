@@ -5,7 +5,8 @@ from .models import Testvariant
 
 # Create your views here.
 def Homepage(request):
-     return render(request, 'DB/homepage.html', {})
+    Variants = Testvariant.objects.all()
+    return render(request, 'DB/homepage.html', {'Variants': Variants})
 
 def Variantpage(request):
     Variants = Testvariant.objects.all()
