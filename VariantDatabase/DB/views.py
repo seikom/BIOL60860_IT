@@ -55,7 +55,7 @@ def Datainputpage(request):
             interpretation, creation = Interpretation_data.objects.get_or_create(
                 variant_id = variant,
                 code_pathogenicity = form.cleaned_data['code_pathogenicity'],
-                codes_evidence = form.cleaned_data['codes_evidence']),
+                codes_evidence = form.cleaned_data['codes_evidence'],
                 uploaded_time = datetime.datetime.now())
 
             #return HttpResponseRedirect('DB/datainputpage.html')
