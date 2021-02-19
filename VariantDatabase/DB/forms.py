@@ -30,7 +30,7 @@ class InputForm(forms.Form):
     variant_cdna = forms.CharField(label='Variant cDNA', max_length=200)
     variant_protein = forms.CharField(label='Variant Protein', max_length=200)
     variant_genome = forms.CharField(label='Variant genome coordinate', max_length=200)
-    code_pathogenicity = forms.ChoiceField(label="Pathogenicity Code", choices=[("1","1 : Benign"),("2","2 : Likely Benign"),("3","3 : VOUS"),("4","4 : Likely Pathogenic"),("5","5 : Pathogenic")])
+    code_pathogenicity = forms.ChoiceField(label="Pathogenicity Code", choices=[("Benign","1 : Benign"),("Likely Benign","2 : Likely Benign"),("VOUS","3 : VOUS"),("Likely Pathogenic","4 : Likely Pathogenic"),("Pathogenic","5 : Pathogenic")])
     codes_evidence = forms.MultipleChoiceField(label="ACMG evidence codes",
                                      widget=forms.CheckboxSelectMultiple, choices=list_all_criteria)
 
@@ -47,6 +47,6 @@ class Bulkinputform(forms.Form):
     variant_cdna = forms.CharField(label='Variant cDNA', max_length=200)
     variant_protein = forms.CharField(label='Variant Protein', max_length=200)
     variant_genome = forms.CharField(label='Variant genome coordinate', max_length=200)
-    code_pathogenicity = forms.ChoiceField(label="Pathogenicity Code", choices=[("1","1 : Benign"),("2","2 : Likely Benign"),("3","3 : VOUS"),("4","4 : Likely Pathogenic"),("5","5 : Pathogenic")])
+    code_pathogenicity = forms.ChoiceField(label="Pathogenicity Code", choices=[("Benign","1 : Benign"),("Likely Benign","2 : Likely Benign"),("VOUS","3 : VOUS"),("Likely Pathogenic","4 : Likely Pathogenic"),("Pathogenic","5 : Pathogenic")])
     codes_evidence = forms.MultipleChoiceField(label="ACMG evidence codes",
                                      widget=forms.CheckboxSelectMultiple, choices=list_all_criteria)
