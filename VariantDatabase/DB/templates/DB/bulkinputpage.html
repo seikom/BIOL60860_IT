@@ -1,4 +1,6 @@
-<html>
+{% extends 'DB/base.html' %}
+{% load static %}
+{% block content %}
 
 <form action="/" method="post">
     {% csrf_token %}
@@ -12,4 +14,4 @@
 
 
 
-</html>
+{% endblock %}
