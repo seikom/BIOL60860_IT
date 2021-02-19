@@ -63,9 +63,6 @@ def Datainputpage(request):
                 variant_protein = form.cleaned_data['variant_protein'],
                 variant_genome = form.cleaned_data['variant_genome']
             )
-            print(variant)
-            print(variant.variant_id)
-
 
             test, creation = Test_data.objects.get_or_create(
                 patient_id = patient,
@@ -76,6 +73,7 @@ def Datainputpage(request):
 
             interpretation, creation = Interpretation_data.objects.get_or_create(
                 variant_id = variant,
+                patient_id = patient,
                 code_pathogenicity = form.cleaned_data['code_pathogenicity'],
                 codes_evidence = str(form.cleaned_data['codes_evidence']).replace("'",""),
                 uploaded_time = datetime.datetime.now()
@@ -120,7 +118,8 @@ def Bulkinputpage(request):
 
             interpretation, creation = Interpretation_data.objects.get_or_create(
                 variant_id = variant,
-                code_pathogenicity = row['Pathogenicity Code'],
+                patient_id = patient,
+                code_pathogenicity = row['Pathogenicity Code'].replace("1","Benign").replace("2","Likely Benign").replace("3","VOUS").replace("4","Likely Pathogenic").replace("5","Pathogenic"),
                 codes_evidence = str(row['Evidence Codes']).replace("'",""),
                 uploaded_time = datetime.datetime.now()
             )

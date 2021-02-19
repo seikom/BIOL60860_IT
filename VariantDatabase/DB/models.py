@@ -34,6 +34,7 @@ class Test_data(models.Model):
 class Interpretation_data(models.Model):
     Interpretation_id = models.AutoField(primary_key=True, null=False)
     variant_id = models.ForeignKey(Variant_data, on_delete=models.CASCADE, null=True)
+    patient_id = models.ForeignKey(Patient_data, on_delete=models.CASCADE, null=True)
     code_pathogenicity = models.CharField(blank=True, choices=(("1","1"),("2","2"),("3","3"),("4","4"),("5","5")), max_length=1, name="code_pathogenicity")
     codes_evidence = models.CharField(max_length=200, blank=True, name="codes_evidence")
     uploaded_time = models.DateTimeField(blank=True, null=True, name="uploaded_time")
