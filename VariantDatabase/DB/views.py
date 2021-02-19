@@ -32,7 +32,6 @@ def Variantpage(request, variant_id):
     context = {
 
     'Variant': Variant,
-    'Tests' : Tests,
     'Interpretations' : Interpretations,
     }
 
