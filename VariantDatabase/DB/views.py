@@ -100,6 +100,35 @@ def Bulkinputpage(request):
             print(row)
             #instance = variant_cdna(variant_cDNA=request.FILES['file'])
             #instance.save()
+            patient, creation = Patient_data.objects.get_or_create(
+            name = row['Name'],
+            age = row['Age'],
+            #proband = row['Proband'],
+            #affected_relatives = row['Affected Relatives'],
+            stage = row['Stage'],
+            description = row['Description']
+            )
+
+            variant, creation = Variant_data.objects.get_or_create(
+            variant_cdna = row['Variant cDNA'],
+            variant_protein = row['Variant Protein'],
+            variant_genome = row['Variant Genome']
+            )
+
+
+            test, creation = Test_data.objects.get_or_create(
+            patient_id = patient,
+            sequencer = row['Sequencer'],
+            variant_id = variant,
+            uploaded_time = datetime.datetime.now()
+            )
+
+            interpretation, creation = Interpretation_data.objects.get_or_create(
+                variant_id = variant,
+                code_pathogenicity = row['Pathogenicity Code'],
+                codes_evidence = str(row['Evidence Codes']).replace("'",""),
+                uploaded_time = datetime.datetime.now()
+            )
     else:
         form = Bulkinputform()
     return render(request, 'DB/bulkinputpage.html', {'form': form})
