@@ -103,8 +103,8 @@ def Bulkinputpage(request):
             patient, creation = Patient_data.objects.get_or_create(
             name = row['Name'],
             age = row['Age'],
-            #proband = row['Proband'],
-            #affected_relatives = row['Affected Relatives'],
+            proband = str(row['Proband']).replace("Y","True").replace("N", "False"),
+            affected_relatives = str(row['Affected Relatives']).replace("Y","True").replace("N", "False"),
             stage = row['Stage'],
             description = row['Description']
             )
