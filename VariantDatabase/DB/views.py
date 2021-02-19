@@ -1,7 +1,7 @@
 import datetime
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, redirect, render
-from .forms import InputForm, Bulkinputform
+from .forms import InputForm
 from .models import Patient_data, Variant_data, Test_data, Interpretation_data
 from django.shortcuts import render
 from django.views.generic import ListView
