@@ -11,22 +11,27 @@ from crispy_forms.layout import Submit, Layout, HTML
 from django.contrib.auth.models import User
 
 # Create your views here.
+
 def Homepage(request):
+    search_term = ''
+    if 'search' in request.GET:
+        search_term = request.GET['search']
+        Variants = Variant_data.objects.filter(gene__icontains=search_term)
+    else:
+        Variants = Variant_data.objects.all()
 
-    Variants = Variant_data.objects.all()
-
-    return render(request, 'DB/homepage.html', {'Variants': Variants})
+    return render(request, 'DB/homepage.html', {'Variants' : Variants, 'search_term': search_term })
 
 def Variantpage(request, variant_id):
 
     Variant = get_object_or_404(Variant_data, variant_id=variant_id)
-    
+
     Tests = Test_data.objects.filter(variant_id__exact=variant_id)
 
     Interpretations = Interpretation_data.objects.filter(variant_id__exact=variant_id)
-    
+
     context = {
-    
+
     'Variant': Variant,
     'Tests' : Tests,
     'Interpretations' : Interpretations,
@@ -59,15 +64,15 @@ def Datainputpage(request):
                 variant_protein = form.cleaned_data['variant_protein'],
                 variant_genome = form.cleaned_data['variant_genome']
             )
-                
-                
+
+
             test, creation = Test_data.objects.get_or_create(
                 patient_id = patient,
                 sequencer = form.cleaned_data['sequencer'],
                 variant_id = variant,
                 uploaded_time = datetime.datetime.now()
             )
-            
+
             interpretation, creation = Interpretation_data.objects.get_or_create(
                 variant_id = variant,
                 code_pathogenicity = form.cleaned_data['code_pathogenicity'],

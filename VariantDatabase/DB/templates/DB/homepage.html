@@ -22,9 +22,11 @@
     	<script type="text/javascript" src="{% static "DataTables/Bootstrap-4-4.1.1/js/bootstrap.min.js" %}"></script>
 
 <form class="SearchView" method="GET" action="" >
-    <input class="SearchView" type="search" name="search"> 
-    <button class="SearchView" type="submit"> Search Variant </button>
+    <input class="SearchView" type="search" name="search">
+    <button class="SearchView" type="submit"> Search for a gene </button>
+
 </form>
+
 
     <div class="table-responsive">
     <table class="table table-hover">
@@ -43,12 +45,10 @@
               <td><a href="/variants/{{Variant.variant_id}}/">{{ Variant.variant_genome | truncatechars:20 }}</td>
               <td>{{ Variant.variant_cdna | truncatechars:20 }}</td>
               <td>{{ Variant.variant_protein | truncatechars:20 }}</td>
-              
+
             </tr>
         {% endfor %}
         </table>
-    
+
 
 {% endblock %}
-
-
