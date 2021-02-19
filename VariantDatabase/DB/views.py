@@ -27,8 +27,6 @@ def Variantpage(request, variant_id):
 
     Variant = get_object_or_404(Variant_data, variant_id=variant_id)
 
-    Tests = Test_data.objects.filter(variant_id__exact=variant_id)
-
     Interpretations = Interpretation_data.objects.filter(variant_id__exact=variant_id)
 
     context = {
