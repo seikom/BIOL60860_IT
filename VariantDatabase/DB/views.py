@@ -92,7 +92,8 @@ def Bulkinputpage(request):
         form = Bulkinputform(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES['file']
-            decoded_file = file.read().decode('utf-8').splitlines()
+            uploaded_file = self.request.GET.get('search')
+            decoded_file = uploaded_file.read().decode('utf-8').splitlines()
             reader = csv.DictReader(decoded_file)
             for row in reader:
                 print(row)
