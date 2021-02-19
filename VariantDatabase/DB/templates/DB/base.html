@@ -5,7 +5,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
         <!-- Bootstrap and datatables CSS -->
         <link rel="stylesheet" type="text/css" href="{% static "DataTables/Bootstrap-4-4.1.1/css/bootstrap.min.css" %}"/>
         <link rel="stylesheet" type="text/css" href="{% static "DataTables/datatables.min.css" %}"/>
@@ -14,8 +14,8 @@
         <script type="text/javascript" src="{% static "DataTables/jQuery-3.3.1/jQuery-3.3.1.min.js" %}"></script>
         <script type="text/javascript" src="{% static "DataTables/datatables.min.js" %}"></script>
         <script type="text/javascript" src="{% static "DataTables/Bootstrap-4-4.1.1/js/bootstrap.min.js" %}"></script>
-        
-       
+
+
     </head>
     <body>
 
@@ -31,16 +31,16 @@
             <a class="nav-link" href="{% url 'Homepage' %}">Home</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{% url 'Datainputpage' %}"> Manual Import</a>
+            <a class="nav-link" href="{% url 'Datainputpage' %}"> Add a patient</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{% url 'Bulkinputpage' %}">CSV import</a>
+            <a class="nav-link" href="{% url 'Bulkinputpage' %}">Import CSV</a>
             </li>
           </ul>
        </div>
       </nav>
       <div>
-        <p> 
+        <p>
           _________
           </p>
       </div>
@@ -52,28 +52,14 @@
             {% endblock %}
 
 
-          <p> 
+          <p>
           VaraintDB provides a software solution to log all classified variants within the laboratory.
           For any troubleshooting enquiries please contact bioinformatics.team@group2.co.uk
 
-          </p>         
+          </p>
                     </div>
                 </div>
             </div>
         </div>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
