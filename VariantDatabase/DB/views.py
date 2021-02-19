@@ -1,7 +1,7 @@
 import datetime
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, redirect, render
-from .forms import InputForm
+from .forms import InputForm, Bulkinputform
 from .models import Patient_data, Variant_data, Test_data, Interpretation_data
 from django.shortcuts import render
 from django.views.generic import ListView
@@ -91,7 +91,7 @@ def Datainputpage(request):
 
 def Bulkinputpage(request):
     if request.method == 'POST':
-        form = InputForm(request.POST)
+        form = Bulkinputform(request.POST)
 
         new_data = request.FILES['myfile']
 
@@ -101,7 +101,7 @@ def Bulkinputpage(request):
         if not result.has_errors():
             form.import_data(dataset, dry_run=False)  # Actually import now
     else:
-        form = InputForm()
+        form = Bulkinputform()
     return render(request, 'DB/bulkinputpage.html', {'form' : form})
 
 
