@@ -1,6 +1,6 @@
 import datetime
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from .forms import InputForm
 from .models import Patient_data, Variant_data, Test_data, Interpretation_data
 from django.shortcuts import render
@@ -64,6 +64,8 @@ def Datainputpage(request):
                 variant_protein = form.cleaned_data['variant_protein'],
                 variant_genome = form.cleaned_data['variant_genome']
             )
+            print(variant)
+            print(variant.variant_id)
 
 
             test, creation = Test_data.objects.get_or_create(
@@ -80,8 +82,7 @@ def Datainputpage(request):
                 uploaded_time = datetime.datetime.now()
             )
 
-                # Need to make the page refresh or give some recognition its done something
-                #return HttpResponseRedirect('DB/datainputpage.html')
+            return redirect('Variantpage', variant_id=variant.variant_id)
     else:
        form = InputForm()
 
