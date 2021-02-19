@@ -1,5 +1,42 @@
-<div>
-      <h1><a href="/">Hyperlink back to homepage</a></h1>
+{% extends 'DB/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr><th>Genomic Coordinate</th><td>{{Variant.variant_genome}}</td></tr>
+<tr><th>Gene</th><td>{{Variant.gene}}</td></tr>
+<tr><th>Chromosome</th><td>{{Variant.chrm}}</td></tr>
+<tr><th>cDNA HGVS</th><td>{{Variant.variant_cdna}}</td></tr>
+<tr><th>Protein HGVS</th><td>{{Variant.variant_protein}}</td></tr>
+</thead>
+</table>
 </div>
 
-{{Variant}}}
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>Date uploaded</th>
+<th>Sequencer</th>
+<th>Pathogenicity</th>
+<th>Criteria codes</th>
+</tr>
+</thead>
+
+{% for test in Tests %}
+<tr>
+<td>{{ test.uploaded_time }}</td>
+<td>{{ test.sequencer }}
+{% endfor %}
+
+{% for interpretation in Interpretations %}
+<td>{{ interpretation.code_pathogenicity }}</td>
+<td>{{ interpretation.codes_evidence }}</td>
+</tr>
+{% endfor %}
+
+
+
+{% endblock %}

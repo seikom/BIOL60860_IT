@@ -14,18 +14,14 @@
         <script type="text/javascript" src="{% static "DataTables/jQuery-3.3.1/jQuery-3.3.1.min.js" %}"></script>
         <script type="text/javascript" src="{% static "DataTables/datatables.min.js" %}"></script>
         <script type="text/javascript" src="{% static "DataTables/Bootstrap-4-4.1.1/js/bootstrap.min.js" %}"></script>
-        <div>
-          <p> VaraintDB provides a software solution to log all classified variants within the laboratory.
-
-          For any troubleshooting enquiries please contact bioinformatics.team@group2.co.uk
-
-          </p>
-        </div>
+        
+       
     </head>
     <body>
+
       <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #c0392b;">
-        <a class="navbar-brand" href="#"><b>VariantDB</b></a>
+        <a class="navbar-brand" <b>VariantDB</b></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,14 +31,26 @@
             <a class="nav-link" href="{% url 'Homepage' %}">Home</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{% url 'Bulkinputpage' %}"> Manual Import</a>
+            <a class="nav-link" href="{% url 'Datainputpage' %}"> Manual Import</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{% url 'Datainputpage' %}">CSV import</a>
+            <a class="nav-link" href="{% url 'Bulkinputpage' %}">CSV import</a>
             </li>
           </ul>
        </div>
       </nav>
+      <div>
+        <p> 
+          _________
+          </p>
+      </div>
+            <div>
+          <p> 
+          VaraintDB provides a software solution to log all classified variants within the laboratory.
+          For any troubleshooting enquiries please contact bioinformatics.team@group2.co.uk
+
+          </p>
+         </div>
        <br>
             {% block content %}
             {% endblock %}

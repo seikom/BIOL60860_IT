@@ -1,11 +1,8 @@
-
-
 {% extends 'DB/base.html' %}
 {% load static %}
-
-
-{% block content %}
+{% load crispy_forms_tags %}
 {% load render_table from django_tables2 %}
+{% block content %}
 
 <html>
         <head>
@@ -24,26 +21,34 @@
     	<script type="text/javascript" src="{% static "DataTables/datatables.min.js" %}"></script>
     	<script type="text/javascript" src="{% static "DataTables/Bootstrap-4-4.1.1/js/bootstrap.min.js" %}"></script>
 
+<form class="SearchView" method="GET" action="" >
+    <input class="SearchView" type="search" name="search">
+    <button class="SearchView" type="submit"> Search for a gene </button>
+
+</form>
+
 
     <div class="table-responsive">
     <table class="table table-hover">
 		<thead>
 		    <tr>
           <th>Gene</th>
-		      <th>cDNA nomenclature</th>
-		      <th>Protein nomenclature</th>
-          <th>Genomic nomenclature</th>
+          <th>Variant</th>
+		      <th>cDNA HGVS</th>
+		      <th>Protein HGVS</th>
 		    </tr>
 		</thead>
 
         {% for Variant in Variants %}
             <tr>
               <td>{{Variant.gene}}</td>
-              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_cdna | truncatechars:20 }}</td>
-              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_protein | truncatechars:20 }}</td>
-              <td><a href="{% url 'Variantpage' %}">{{ Variant.variant_genome | truncatechars:20 }}</td>
+              <td><a href="/variants/{{Variant.variant_id}}/">{{ Variant.variant_genome | truncatechars:20 }}</td>
+              <td>{{ Variant.variant_cdna | truncatechars:20 }}</td>
+              <td>{{ Variant.variant_protein | truncatechars:20 }}</td>
+
             </tr>
         {% endfor %}
+        </table>
 
-	</html>
+
 {% endblock %}
