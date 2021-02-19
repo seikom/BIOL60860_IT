@@ -89,17 +89,13 @@ def Datainputpage(request):
 
 def Bulkinputpage(request):
     if request.method == 'POST':
-        form = Bulkinputform(request.POST, request.FILES)
-        #print('hello')
         file = request.FILES['myfile']
-        #print(file)
         uploaded_file = request.POST.get('file')
         decoded_file = file.read().decode('utf-8').splitlines()
         reader = csv.DictReader(decoded_file)
         for row in reader:
             print(row)
-            #instance = variant_cdna(variant_cDNA=request.FILES['file'])
-            #instance.save()
+
             patient, creation = Patient_data.objects.get_or_create(
             name = row['Name'],
             age = row['Age'],
@@ -115,7 +111,6 @@ def Bulkinputpage(request):
             variant_genome = row['Variant Genome']
             )
 
-
             test, creation = Test_data.objects.get_or_create(
             patient_id = patient,
             sequencer = row['Sequencer'],
@@ -129,9 +124,8 @@ def Bulkinputpage(request):
                 codes_evidence = str(row['Evidence Codes']).replace("'",""),
                 uploaded_time = datetime.datetime.now()
             )
-    else:
-        form = Bulkinputform()
-    return render(request, 'DB/bulkinputpage.html', {'form': form})
+
+    return render(request, 'DB/bulkinputpage.html')
 
 
 
