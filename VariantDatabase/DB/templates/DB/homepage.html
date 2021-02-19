@@ -3,23 +3,6 @@
 {% load render_table from django_tables2 %}
 {% block content %}
 
-<html>
-        <head>
-        <title>Variant database</title>
-		</head>
-	   	<!-- Required meta tags -->
-   		 <meta charset="utf-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    	<!-- Bootstrap and datatables CSS -->
-    	<link rel="stylesheet" type="text/css" href="{% static "DataTables/Bootstrap-4-4.1.1/css/bootstrap.min.css" %}"/>
-    	<link rel="stylesheet" type="text/css" href="{% static "DataTables/datatables.min.css" %}"/>
-
-    	<!-- jQuery, bootstrap and datatables javascript - jQuery must go first! -->
-    	<script type="text/javascript" src="{% static "DataTables/jQuery-3.3.1/jQuery-3.3.1.min.js" %}"></script>
-    	<script type="text/javascript" src="{% static "DataTables/datatables.min.js" %}"></script>
-    	<script type="text/javascript" src="{% static "DataTables/Bootstrap-4-4.1.1/js/bootstrap.min.js" %}"></script>
-
 <form class="SearchView" method="GET" action="" >
     <input class="SearchView" type="search" name="search">
     <button class="SearchView" type="submit"> Search for a gene </button>
