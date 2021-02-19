@@ -9,6 +9,7 @@ from crispy_forms.bootstrap import Field
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, HTML
 from django.contrib.auth.models import User
+from tablib import Dataset
 
 # Create your views here.
 
@@ -88,10 +89,20 @@ def Datainputpage(request):
     return render(request, 'DB/datainputpage.html', {'form' : form})
 
 def Bulkinputpage(request):
+    if request.method == 'POST':
+        form = InputForm(request.POST)
 
+        new_data = request.FILES['myfile']
 
+        dataset = form.load(new_data.read())
+        result = form.import_data(dataset, dry_run=True)  # Test the data import
 
-    return render(request, 'DB/bulkinputpage.html', {})
+        if not result.has_errors():
+            form.import_data(dataset, dry_run=False)  # Actually import now
+    else:
+        form = InputForm()
+    return render(request, 'DB/bulkinputpage.html', {'form' : form})
+
 
 
 class SearchView(ListView):

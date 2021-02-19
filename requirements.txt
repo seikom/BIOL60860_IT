@@ -1,2 +1,3 @@
 Django
 django-tables2
+django-import-export
