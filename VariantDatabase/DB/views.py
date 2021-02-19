@@ -11,7 +11,7 @@ from crispy_forms.layout import Submit, Layout, HTML
 from django.contrib.auth.models import User
 from tablib import Dataset
 from django.http import HttpResponseRedirect
-
+import csv
 # Create your views here.
 
 def Homepage(request):
@@ -90,13 +90,14 @@ def Datainputpage(request):
 def Bulkinputpage(request):
     if request.method == 'POST':
         form = Bulkinputform(request.POST, request.FILES)
-        if form.is_valid():
-            file = request.FILES['file']
-            uploaded_file = self.request.GET.get('search')
-            decoded_file = uploaded_file.read().decode('utf-8').splitlines()
-            reader = csv.DictReader(decoded_file)
-            for row in reader:
-                print(row)
+        #print('hello')
+        file = request.FILES['myfile']
+        #print(file)
+        uploaded_file = request.POST.get('file')
+        decoded_file = file.read().decode('utf-8').splitlines()
+        reader = csv.DictReader(decoded_file)
+        for row in reader:
+            print(row)
             #instance = variant_cdna(variant_cDNA=request.FILES['file'])
             #instance.save()
     else:
