@@ -27,7 +27,7 @@ class Variant_data(models.Model):
 class Test_data(models.Model):
     test_id = models.AutoField(primary_key=True, null=False)
     patient_id = models.ForeignKey(Patient_data, on_delete=models.CASCADE, null=True)
-    sequencer = models.CharField(choices=(("HiSeq", "HiSeq"), ("MiSeq", "MiSeq")), max_length=20, null=True, name='sequencer')
+    sequencer = models.CharField(choices=(("HiSeq", "HiSeq"), ("MiSeq", "MiSeq"), ("NovaSeq", "NovaSeq"),("Other", "Other")), max_length=20, null=True, name='sequencer')
     variant_id = models.ForeignKey(Variant_data, on_delete=models.CASCADE, null=True)
     uploaded_time = models.DateTimeField(blank=True, null=True, name="uploaded_time")
 
