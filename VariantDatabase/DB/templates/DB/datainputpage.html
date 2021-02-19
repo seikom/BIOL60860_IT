@@ -1,15 +1,12 @@
-<html>
+{% extends 'DB/base.html' %}
+{% load static %}
+{% block content %}
+
 
 <form action="/datainput/" method="post">
     {% csrf_token %}
-    {{ form }}
+    <table>{{ form.as_table }}</table>
     <input type="submit" value="Submit">
 </form>
 
-<p>Page for input of a single patient with button / link to input form</p>
-
-
-
-
-
-</html>
+{% endblock %}
