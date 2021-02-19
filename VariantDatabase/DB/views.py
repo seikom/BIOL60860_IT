@@ -103,6 +103,7 @@ def Bulkinputpage(request):
     return render(request, 'DB/bulkinputpage.html', {'form': form})
 
 
+
 class SearchView(ListView):
     model = Variant_data
     template_name = 'homepage.html'
